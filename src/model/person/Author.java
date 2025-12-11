@@ -1,27 +1,35 @@
 package model.person;
 
+import model.book.Book;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Author extends Person{
-    private List<String> books = new ArrayList<>();
+    private List<Book> books = new ArrayList<>();
     public Author( String name) {
         super(name);
     }
 
-    public void newBook(String bookName){
-        books.add(bookName);
+    public void newBook(Book book){
+        books.add(book);
     }
 
-    public List<String> getBooks(){
+    public List<Book> getBooks() {
         return books;
     }
 
     public void showBook(){
         System.out.println("Books written by " + getName() + ":");
-        for(String title : books){
-            System.out.println(" - " + title);
+        if(books.isEmpty()){
+            System.out.println("No book");
+        }else{
+            for(Book b : books){
+                b.display();
+            }
+
         }
+
     }
 
     @Override

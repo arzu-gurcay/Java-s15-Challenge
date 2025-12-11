@@ -1,10 +1,12 @@
 package model.book;
 
+import model.person.Author;
+
 import java.time.LocalDate;
 
 public class Book {
-    private int id;
-    private String author;
+    private int bookId;
+    private Author author;
     private String name;
     private double price;
     private String status;
@@ -12,18 +14,20 @@ public class Book {
     private LocalDate dateOfPurchase;
     private String owner;
 
-    public Book(int id, String author, String name, double price, LocalDate dateOfPurchase) {
-        this.id = id;
+    public Book(int bookId, Author author, String name, double price, String edition, LocalDate dateOfPurchase) {
+        this.bookId = bookId;
         this.author = author;
         this.name = name;
         this.price = price;
+        this.edition=edition;
         this.status= "available";
         this.dateOfPurchase = dateOfPurchase;
     }
+
     public String getTitle(){
         return name;
     }
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
@@ -39,11 +43,11 @@ public class Book {
     }
 
     public void display(){
-        System.out.println("ID: " + id + " Author: " + author + " Title: " + name + " Price: " + price + " Status: " + status + " Edition: " + (edition==null ? "-" : edition) + " Date of Purchase: " + dateOfPurchase + " Owner: " + (owner==null ? "-" : owner) );
+        System.out.println("ID: " + bookId + " Author: " + author + " Title: " + name + " Price: " + price + " Status: " + status + " Edition: " + edition + " Date of Purchase: " + dateOfPurchase + " Owner: " + owner );
     }
 
-    public int getId() {
-        return id;
+    public int getBookId() {
+        return bookId;
     }
 
     public double getPrice() {
