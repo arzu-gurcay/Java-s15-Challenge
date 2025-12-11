@@ -1,9 +1,11 @@
 package model.book;
 
+import model.person.Author;
+
 import java.time.LocalDate;
 
 public class Book {
-    private int id;
+    private int bookId;
     private String author;
     private String name;
     private double price;
@@ -12,14 +14,16 @@ public class Book {
     private LocalDate dateOfPurchase;
     private String owner;
 
-    public Book(int id, String author, String name, double price, LocalDate dateOfPurchase) {
-        this.id = id;
+    public Book(int bookId, String author, String name, double price, String edition, LocalDate dateOfPurchase) {
+        this.bookId = bookId;
         this.author = author;
         this.name = name;
         this.price = price;
+        this.edition=edition;
         this.status= "available";
         this.dateOfPurchase = dateOfPurchase;
     }
+
     public String getTitle(){
         return name;
     }
@@ -39,11 +43,11 @@ public class Book {
     }
 
     public void display(){
-        System.out.println("ID: " + id + " Author: " + author + " Title: " + name + " Price: " + price + " Status: " + status + " Edition: " + (edition==null ? "-" : edition) + " Date of Purchase: " + dateOfPurchase + " Owner: " + (owner==null ? "-" : owner) );
+        System.out.println("ID: " + bookId + " Author: " + author + " Title: " + name + " Price: " + price + " Status: " + status + " Edition: " + edition + " Date of Purchase: " + dateOfPurchase + " Owner: " + owner );
     }
 
-    public int getId() {
-        return id;
+    public int getBookId() {
+        return bookId;
     }
 
     public double getPrice() {
@@ -56,6 +60,30 @@ public class Book {
 
     public LocalDate getDateOfPurchase() {
         return dateOfPurchase;
+    }
+
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
     }
 
     public void setEdition(String edition) {

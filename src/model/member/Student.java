@@ -1,7 +1,7 @@
 package model.member;
 
 public class Student extends MemberRecord{
-    public Student(int id, String name) {
-        super(id, name,"Student");
+    public Student(int memberId, String name, String type) {
+        super(memberId, name, "Student");
     }
 }

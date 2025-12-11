@@ -3,7 +3,7 @@ package model.member;
 import java.time.LocalDate;
 
 public class MemberRecord {
-    private int id;
+    private int memberId;
     private String type;
     private LocalDate dateOfMembership;
     private int noBooksIssued;
@@ -12,8 +12,8 @@ public class MemberRecord {
     private String address;
     private String phoneNo;
 
-    public MemberRecord(int id, String name, String type, LocalDate dateOfMembership, int noBooksIssued) {
-        this.id = id;
+    public MemberRecord(int memberId, String name, String type, LocalDate dateOfMembership, int noBooksIssued) {
+        this.memberId = memberId;
         this.name = name;
         this.type = type;
         this.dateOfMembership = LocalDate.now();
@@ -21,11 +21,14 @@ public class MemberRecord {
 
     }
 
-    public MemberRecord(int id, String name, String type) {
+    public MemberRecord(int memberId, String name, String type) {
+        this.memberId=memberId;
+        this.name=name;
+        this.type=type;
     }
 
     public String getMember(){
-        return "[" + id + "] " + name + " (" + type + ")";
+        return "[" + memberId + "] " + name + " (" + type + ")";
     }
 
     public void incBookIssued(){
@@ -39,10 +42,10 @@ public class MemberRecord {
     }
 
     public void payBill(){
-        System.out.println(name + " paid.");
+        System.out.println(getMember()+ " paid.");
     }
-    public int getId() {
-        return id;
+    public int getMemberId() {
+        return memberId;
     }
 
     public String getType() {

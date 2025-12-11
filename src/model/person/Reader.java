@@ -14,18 +14,28 @@ public class Reader extends Person{
     }
 
     public void purchaseBook(Book book){
-        books.add(book);
-        System.out.println(getName() + " purchased: " + book.getTitle());
+        if(!books.contains(book)){
+            books.add(book);
+            book.changeOwner(getName());
+            book.updateStatus("purchased");
+            System.out.println(getName() + " purchased: " + book.getTitle());
+        }
+
     }
 
     public void borrowBook(Book book){
-        book.updateStatus("borrowed");
-        book.changeOwner(getName());
-        System.out.println(getName() + " borrowed: " + book.getTitle());
+        if(!books.contains(book)){
+            books.add(book);
+            book.changeOwner(getName());
+            book.updateStatus("borrowed");
+            System.out.println(getName() + " borrowed: " + book.getTitle());
+        }
+
     }
 
     public void returnBook(Book book){
         if(books.remove(book)){
+            book.updateStatus("available");
             System.out.println(getName() + " returned: " + book.getTitle());
         }else{
             System.out.println(book.getTitle() + " is not in " + getName() + "'s list.");
@@ -34,8 +44,12 @@ public class Reader extends Person{
 
     public void showBook(){
         System.out.println(getName() + "'s books: ");
-        for(Book b : books){
-            System.out.println(" - " + b.getTitle());
+        if(books.isEmpty()){
+            System.out.println("No book");
+        }else{
+            for(Book b : books){
+                b.display();
+            }
         }
     }
 
